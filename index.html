@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="author" content="Urs Waldmann">
+        <meta name="description" content="Project page for 'Improving Unsupervised Label Propagation for Pose Tracking and Video Object Segmentation' (GCPR 2022)">
+        <meta name="keywords" content="label propagation, unsupervised, pose tracking, vos">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Improving Unsupervised Label Propagation for Pose Tracking and Video Object Segmentation</title>
+        <link rel="stylesheet" href="html/c.css">
+    </head>
+    <body>
+        <!-- header -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <h1 class="col-md-12 text-center">
+                        <b>Improving Unsupervised Label Propagation for Pose Tracking and Video Object Segmentation</b>:
+                        <br>
+                        <small class="h4">
+                            <a href="https://gcpr-vmv-2022.uni-konstanz.de/" target="_blank">GCPR 2022</a>
+                        </small>
+                    </h1>
+                </div>
+                <hr style="margin-top:0px">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a href="mailto:urs.waldmann@uni-konstanz.de">Urs Waldmann</a><sup>1,2</sup>, Jannik Bamberger<sup>1</sup>, Ole Johannsen<sup>1</sup>, Oliver Deussen<sup>1,2</sup>, and Bastian Goldlücke<sup>1,2</sup>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <sup>1</sup> Department of Computer and Information Science, University of Konstanz, Germany
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <sup>2</sup> Centre for the Advanced Study of Collective Behaviour, University of Konstanz, Germany
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-3 text-center">
+                        <ul class="nav nav-pills nav-justified">
+                            <li>
+                                <a href="docs/unlabprop_paper.pdf" target="_blank">
+                                <image src="imgs/paper.png" height="120px"><br>
+                                    <h4><strong>Paper</strong></h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <ul class="nav nav-pills nav-justified">
+                            <li>
+                                <a href="docs/unlabprop_supplemental.pdf" target="_blank">
+                                <image src="imgs/supplemental.png" height="120px"><br>
+                                    <h4><strong>Supplementary</strong></h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <ul class="nav nav-pills nav-justified">
+                            <li>
+                                <a href="https://github.com/urs-waldmann/improving-unsupervised-label-propagation" target="_blank">
+                                <image src="imgs/GitHub-Mark-120px-plus.png" height="120px"><br>
+                                    <h4><strong>Code</strong></h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>    
+        <!-- abstract -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <h3 class="col-md-12 text-center">
+                        <b>Abstract</b>
+                    </h3>
+                </div>
+                <hr style="margin-top:0px">
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                    Label propagation is a challenging task in computer vision with many applications. One approach is to learn representations of visual correspondence. In this paper, we study recent works on label propagation based on correspondence, carefully evaluate the effect of various aspects of their implementation, and improve upon various details. Our pipeline assembled from these best practices outperforms the previous state of the art in terms of PCK_0.1 on the JHMDB dataset by 6.5%. We also propose a novel joint framework for tracking and keypoint propagation, which in contrast to the base pipeline is applicable to tracking small objects and obtains results that substantially exceed the performance of the core pipeline. Finally, for VOS, we extend our pipeline to a fully unsupervised one by initializing the first frame with the self-attention layer from DINO. Our pipeline for VOS runs online and can handle static objects. It outperforms unsupervised frameworks with these characteristics.
+                    </div>
+                </div>
+            </div>
+        </section>    
+        <!-- additional results -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3>
+                            <b>Additional Results</b>
+                        </h3>
+                    </div>
+                </div>
+                <hr style="margin-top:0px">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>
+                            <b>Our Method with Joint Tracking for a Single Pigeon</b>
+                        </h4>
+                        <p>Here we track and propagate the pose of a real-world pigeon.</p>
+                        <video id="v0" width="100%" autoplay loop muted controls>
+                            <source src="videos/pigeon_tracking-realworld_data.mp4" type="video/mp4" />
+                        </video>
+                        <p><br><br>Here we track and propagate the pose of a synthetic pigeon. This scene is challenging as the tracker might get stuck on the strong background texture.</p>
+                        <video id="v0" width="100%" autoplay loop muted controls>
+                            <source src="videos/pigeon_tracking-synthetic_data.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- citation -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3>
+                            <b>Cite us</b>
+                        </h3>
+                    </div>
+                </div>
+                <hr style="margin-top:0px">
+                <div class="row">
+                    <div class="col-md-12">
+                        <pre style="background-color: #e9eeef">
+                            <code>
+    @inproceedings{waldmann2022improving,
+      title={Improving Unsupervised Label Propagation for Pose Tracking and Video Object Segmentation},
+      author={Waldmann, Urs and Bamberger, Jannik and Johannsen, Ole and Deussen, Oliver and Goldl\"{u}cke, Bastian},
+      booktitle={Pattern Recognition (Proc. of DAGM GCPR)},
+      year={2022},
+      pages={230--245}
+      }
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- footer -->
+        <footer class="text-center" style="margin-bottom:10px">
+            <a href="https://urs-waldmann.github.io/improving-unsupervised-label-propagation/" target="_blank">This project</a> is maintained by <a href="https://urs-waldmann.de/computer-vision/" target="_blank">Urs Waldmann</a>.
+        </footer>
+    </body>
+</html>
