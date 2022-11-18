@@ -1,0 +1,36 @@
+{
+  "feat_ext": {
+    "name": "vit",
+    "variant": "base",
+    "patch_size": 8,
+    "scale_size": 480
+  },
+  "dataset": {
+    "name": "segmentation_dataset",
+    "data": {
+      "name": "davis",
+      "year": "2016",
+      "split": "val",
+      "mode": "single-object"
+    },
+    "codec": {
+      "channel_normalization": "minmax",
+      "interpolation_mode": "bilinear"
+    }
+  },
+  "label_propagation": {
+    "name": "affinity",
+    "implementation": "full",
+    "feature_normalization": true,
+    "affinity_topk": 5,
+    "topk_implementation": "full",
+    "affinity_norm": "dino",
+    "neighborhood_size": 12,
+    "label_normalization": "none"
+  },
+  "evaluator": {
+    "num_context": 7,
+    "recreate_labels": false,
+    "label_initializer": "so_attention_v4"
+  }
+}

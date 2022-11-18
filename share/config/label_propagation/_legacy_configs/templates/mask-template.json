@@ -1,0 +1,27 @@
+{
+  "dataset": {
+    "name": "davis",
+    "year": "2017",
+    "split": "val"
+  },
+  "feat_ext": {
+    "name": "vit",
+    "variant": "base",
+    "patch_size": 8,
+    "scale_size": 480
+  },
+  "label_propagation": {
+    "name": "affinity",
+    "implementation": "local",
+    "feature_normalization": true,
+    "affinity_topk": 5,
+    "topk_implementation": "full",
+    "affinity_norm": "dino",
+    "neighborhood_size": 12,
+    "label_normalization": "none"
+  },
+  "evaluator": {
+    "num_context": 7,
+    "recreate_labels": false
+  }
+}

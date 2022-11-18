@@ -1,0 +1,536 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jbamberger.de/schemas/ma-thesis/labelprop-config.json",
+  "type": "object",
+  "properties": {
+    "dataset": {
+      "$ref": "#/$defs/dataset"
+    },
+    "feat_ext": {
+      "$ref": "#/$defs/feat_ext"
+    },
+    "label_propagation": {
+      "$ref": "#/$defs/label_propagation"
+    },
+    "evaluator": {
+      "$ref": "#/$defs/evaluator"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "dataset",
+    "feat_ext",
+    "label_propagation",
+    "evaluator"
+  ],
+  "$defs": {
+    "dataset": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/davis"
+        },
+        {
+          "$ref": "#/$defs/segmentation_dataset"
+        },
+        {
+          "$ref": "#/$defs/keypoint_dataset"
+        }
+      ]
+    },
+    "segmentation_dataset": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "segmentation_dataset"
+        },
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/davis"
+            },
+            {
+              "$ref": "#/$defs/segtrackv2"
+            }
+          ]
+        },
+        "codec": {
+          "type": "object",
+          "properties": {
+            "interpolation_mode": {
+              "enum": ["nearest", "bilinear", "bicubic", "none"]
+            },
+            "channel_normalization": {
+              "enum": ["minmax", "none"]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "interpolation_mode", "channel_normalization"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["name", "data", "codec"]
+    },
+    "davis": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "davis"
+        },
+        "year": {
+          "enum": [
+            "2016",
+            "2017"
+          ]
+        },
+        "split": {
+          "enum": [
+            "train",
+            "val",
+            "trainval"
+          ]
+        },
+        "resolution": {
+          "enum": [
+            "480p",
+            "1080p"
+          ]
+        },
+        "mode": {
+          "enum": ["single-object", "multi-object"]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "year",
+        "split"
+      ]
+    },
+    "segtrackv2": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "segtrackv2"
+        },
+        "mode": {
+          "enum": ["single-object", "multi-object"]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "keypoint_dataset": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "keypoint_dataset"
+        },
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/jhmdb_keypoint"
+            },
+            {
+              "$ref": "#/$defs/pigeon_keypoint"
+            },
+            {
+              "$ref": "#/$defs/badja_keypoint"
+            }
+          ]
+        },
+        "save_config": {
+          "type": "object",
+          "properties": {
+            "keypoint_file_name": {
+              "type": "string"
+            },
+            "skeleton_name_pattern": {
+              "type": ["string", "null"]
+            },
+            "marker_name_pattern": {
+              "type": ["string", "null"]
+            },
+            "heatmap_name_pattern": {
+              "type": ["string", "null"]
+            },
+            "labelmap_file_name": {
+              "type": ["string", "null"]
+            }
+          },
+          "additionalProperties": false,
+          "required": []
+        },
+        "codec": {
+          "type": "object",
+          "properties": {
+            "with_background": {
+              "type": "boolean"
+            },
+            "label_spread": {
+              "type": "number"
+            },
+            "label_distribution_type": {
+              "enum": [
+                "Gaussian",
+                "Cauchy"
+              ]
+            },
+            "label_subpix_accurate": {
+              "type": "boolean"
+            },
+            "decode_method": {
+              "enum": [
+                "topk",
+                "upsampling",
+                "moments",
+                "gaussian",
+                "cog3",
+                "cog5",
+                "cog7",
+                "br2",
+                "br4",
+                "br8",
+                "linear",
+                "parabolic"
+              ]
+            },
+            "decode_top_k": {
+              "type": "number"
+            },
+            "decode_upscale_factor": {
+              "type": "number"
+            },
+            "decode_moment_threshold": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "label_spread",
+            "label_distribution_type",
+            "label_subpix_accurate",
+            "decode_method"
+          ]
+        },
+        "keypoint_sigma": {
+          "type": "number",
+          "deprecated": true
+        },
+        "keypoint_topk": {
+          "type": "number",
+          "deprecated": true
+        },
+        "dataset_iterator_type": {"enum":  ["default", "tracking"]}
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "data"
+      ]
+    },
+    "jhmdb_keypoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "jhmdb"
+        },
+        "split": {
+          "enum": [
+            "train",
+            "test"
+          ]
+        },
+        "split_num": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "per_class_limit": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "split",
+        "split_num"
+      ]
+    },
+    "pigeon_keypoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "pigeon"
+        },
+        "version": {
+          "enum": ["v1", "v2"]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "badja_keypoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "badja"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "feat_ext": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/feat_ext_swin"
+        },
+        {
+          "$ref": "#/$defs/feat_ext_vit"
+        },
+        {
+          "$ref": "#/$defs/feat_ext_uvc"
+        },
+        {
+          "$ref": "#/$defs/feat_ext_stc"
+        },
+        {
+          "$ref": "#/$defs/feat_ext_dummy"
+        }
+      ]
+    },
+    "feat_ext_swin": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "swin"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "feat_ext_vit": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "vit"
+        },
+        "variant": {
+          "enum": [
+            "tiny",
+            "small",
+            "base"
+          ]
+        },
+        "patch_size": {
+          "enum": [
+            8,
+            16
+          ]
+        },
+        "scale_size": {
+          "type": "number"
+        },
+        "weight_source": {
+          "enum": [
+            "dino",
+            "mocov3"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "variant",
+        "patch_size",
+        "scale_size"
+      ]
+    },
+    "feat_ext_uvc": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "uvc"
+        },
+        "scale_size": {
+          "type": "number"
+        },
+        "use_equal_sidelen": {
+          "type": "boolean"
+        },
+        "model_key": {"enum": ["jhmdb", "davis"]}
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "scale_size"
+      ]
+    },
+    "feat_ext_stc": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "stc"
+        },
+        "scale_size": {
+          "type": "number"
+        },
+        "use_equal_sidelen": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "scale_size"
+      ]
+    },
+    "feat_ext_dummy": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "dummy"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "label_propagation": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/label_propagation_affinity"
+        },
+        {
+          "$ref": "#/$defs/label_propagation_dcf"
+        },
+        {
+          "$ref": "#/$defs/label_propagation_uvc_original"
+        }
+      ]
+    },
+    "label_propagation_affinity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "affinity"
+        },
+        "implementation": {
+          "enum": [
+            "full",
+            "local"
+          ]
+        },
+        "affinity_topk": {
+          "type": "number"
+        },
+        "feature_normalization": {
+          "type": "boolean"
+        },
+        "affinity_norm": {
+          "enum": [
+            "none",
+            "softmax",
+            "dino",
+            "dino+softmax",
+            "uvc",
+            "uvc+softmax"
+          ]
+        },
+        "topk_implementation": {
+          "enum": [
+            "full",
+            "batched"
+          ]
+        },
+        "label_normalization": {
+          "enum": [
+            "minmax",
+            "none"
+          ]
+        },
+        "neighborhood_size": {
+          "type": "number"
+        },
+        "apply_nh_to_reference": {"type":  "boolean"}
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "implementation",
+        "affinity_topk",
+        "feature_normalization",
+        "affinity_norm",
+        "topk_implementation",
+        "label_normalization",
+        "neighborhood_size"
+      ]
+    },
+    "label_propagation_dcf": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "dcf"
+        },
+        "use_cos_window": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "use_cos_window"
+      ]
+    },
+    "label_propagation_uvc_original": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "uvc_original"
+        },
+        "affinity_topk": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "affinity_topk"
+      ]
+    },
+    "evaluator": {
+      "type": "object",
+      "properties": {
+        "num_context": {
+          "type": "number"
+        },
+        "recreate_labels": {
+          "type": "boolean"
+        },
+        "label_initializer": {
+          "enum": ["ground_truth", "so_attention", "so_attention_v2", "so_attention_v3", "so_attention_v4", "so_attention_v5", "so_attention_v5_minprob"]
+        },
+        "use_first_frame_annotations": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "num_context",
+        "recreate_labels"
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "feat_ext": {
+    "name": "vit",
+    "scale_size": 480,
+    "patch_size": 8,
+    "variant": "base"
+  },
+  "dataset": {
+    "name": "keypoint_dataset",
+    "keypoint_topk": 5,
+    "keypoint_sigma": 0.5,
+    "data": {
+      "name": "jhmdb",
+      "split": "test",
+      "split_num": 1
+    }
+  },
+  "evaluator": {
+    "num_context": 7,
+    "recreate_labels": false
+  },
+  "label_propagation": {
+    "name": "affinity",
+    "implementation": "full",
+    "affinity_norm": "uvc+softmax",
+    "topk_implementation": "full",
+    "label_normalization": "none",
+    "feature_normalization": true,
+    "affinity_topk": 5,
+    "neighborhood_size": 12
+  }
+}

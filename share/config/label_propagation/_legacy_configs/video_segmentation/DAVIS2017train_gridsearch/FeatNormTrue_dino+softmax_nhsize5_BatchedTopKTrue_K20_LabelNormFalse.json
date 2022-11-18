@@ -1,0 +1,27 @@
+{
+  "feat_ext": {
+    "name": "vit",
+    "scale_size": 480,
+    "patch_size": 8,
+    "variant": "base"
+  },
+  "dataset": {
+    "name": "davis",
+    "split": "train",
+    "year": "2017"
+  },
+  "evaluator": {
+    "num_context": 7,
+    "recreate_labels": false
+  },
+  "label_propagation": {
+    "name": "affinity",
+    "implementation": "full",
+    "affinity_norm": "dino+softmax",
+    "topk_implementation": "batched",
+    "label_normalization": "none",
+    "feature_normalization": true,
+    "affinity_topk": 20,
+    "neighborhood_size": 5
+  }
+}

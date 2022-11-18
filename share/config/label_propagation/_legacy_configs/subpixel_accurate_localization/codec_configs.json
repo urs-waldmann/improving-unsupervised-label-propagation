@@ -1,0 +1,121 @@
+[
+  {
+    "decode_method": "upsampling",
+    "decode_upscale_factor": 4
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.1
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.2
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.3
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.35
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.4
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.5
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.6
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.7
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.8
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.9
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 1.0
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 1
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 3
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 5
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 7
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 9
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 10
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 11
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 13
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 15
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 17
+  },
+  {
+    "decode_method": "topk",
+    "decode_top_k": 20
+  },
+  {
+    "decode_method": "gaussian"
+  },
+  {
+    "decode_method": "cog3"
+  },
+  {
+    "decode_method": "cog5"
+  },
+  {
+    "decode_method": "cog7"
+  },
+  {
+    "decode_method": "br2"
+  },
+  {
+    "decode_method": "br4"
+  },
+  {
+    "decode_method": "br8"
+  },
+  {
+    "decode_method": "linear"
+  },
+  {
+    "decode_method": "parabolic"
+  }
+]

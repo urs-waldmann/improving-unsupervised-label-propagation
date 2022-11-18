@@ -1,0 +1,46 @@
+[
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.1
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.2
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.3
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.35
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.4
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.5
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.6
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.7
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.8
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 0.9
+  },
+  {
+    "decode_method": "moments",
+    "decode_moment_threshold": 1.0
+  }
+]

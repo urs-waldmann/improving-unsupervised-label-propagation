@@ -1,0 +1,30 @@
+{
+  "dataset": {
+    "name": "keypoint_dataset",
+    "keypoint_topk": 5,
+    "keypoint_sigma": 0.5,
+    "data": {
+      "name": "jhmdb",
+      "split": "test",
+      "split_num": 1
+    }
+  },
+  "feat_ext": {
+    "name": "uvc",
+    "scale_size": 480
+  },
+  "label_propagation": {
+    "name": "affinity",
+    "implementation": "full",
+    "feature_normalization": false,
+    "affinity_topk": 20,
+    "topk_implementation": "batched",
+    "affinity_norm": "softmax",
+    "neighborhood_size": -1,
+    "label_normalization": "minmax"
+  },
+  "evaluator": {
+    "num_context": 7,
+    "recreate_labels": false
+  }
+}

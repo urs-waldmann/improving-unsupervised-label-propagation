@@ -1,0 +1,32 @@
+{
+  "dataset": {
+    "name": "keypoint_dataset",
+    "keypoint_topk": 5,
+    "keypoint_sigma": 0.5,
+    "data": {
+      "name": "jhmdb",
+      "split": "test",
+      "split_num": 1
+    }
+  },
+  "feat_ext": {
+    "name": "vit",
+    "variant": "base",
+    "patch_size": 8,
+    "scale_size": 480
+  },
+  "label_propagation": {
+    "name": "affinity",
+    "implementation": "local",
+    "feature_normalization": true,
+    "affinity_topk": 5,
+    "topk_implementation": "full",
+    "affinity_norm": "dino",
+    "neighborhood_size": 12,
+    "label_normalization": "none"
+  },
+  "evaluator": {
+    "num_context": 7,
+    "recreate_labels": true
+  }
+}
